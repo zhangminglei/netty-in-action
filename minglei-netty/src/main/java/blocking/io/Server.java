@@ -33,7 +33,9 @@ public class Server {
                 System.out.println(socketChannel.getRemoteAddress());
                 SocketHandler handler = new SocketHandler(socketChannel);
                 System.out.println("This connected thread hashcode : " + handler.hashCode());
-                new Thread(handler).start();
+                Thread thread = new Thread(handler);
+                thread.start();
+                System.out.println("This thread state is : " + thread.getState());
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
